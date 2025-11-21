@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S Sachin - AI & Data Science Portfolio</title>
+    <style>
+        :root {
+            --color-white: rgba(255, 255, 255, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-brown-600: rgba(94, 82, 64, 1);
+            --color-charcoal-700: rgba(31, 33, 33, 1);
+            --color-charcoal-800: rgba(38, 40, 40, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --color-teal-300: rgba(50, 184, 198, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-teal-700: rgba(26, 104, 115, 1);
+            --color-brown-600-rgb: 94, 82, 64;
+            --color-teal-500-rgb: 33, 128, 141;
+            --color-slate-900-rgb: 19, 52, 59;
+            --color-background: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: var(--color-slate-900);
+            --color-text-secondary: var(--color-slate-500);
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-btn-primary-text: var(--color-cream-50);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-gray-400-rgb: 119, 124, 124;
+                --color-teal-300-rgb: 50, 184, 198;
+                --color-gray-300-rgb: 167, 169, 169;
+                --color-gray-200-rgb: 245, 245, 245;
+                --color-background: var(--color-charcoal-700);
+                --color-surface: var(--color-charcoal-800);
+                --color-text: var(--color-gray-200);
+                --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+                --color-primary: var(--color-teal-300);
+                --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+                --color-btn-primary-text: var(--color-slate-900);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section with Animated Background */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 2px, transparent 2px);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom center no-repeat;
+            background-size: cover;
+            pointer-events: none;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            max-width: 900px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease;
+            background: inherit;
+            color: white;
+            letter-spacing: 2px;
+            position: relative;
+            mix-blend-mode: soft-light;
+            opacity: 0.95;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 30px rgba(255,255,255,1), 0 0 60px rgba(255,215,0,0.9), 0 0 90px rgba(255,69,0,0.7), 4px 4px 8px rgba(0,0,0,0.5);
+                filter: brightness(1.2) contrast(1.3);
+            }
+            50% {
+                text-shadow: 0 0 50px rgba(255,255,255,1), 0 0 100px rgba(255,215,0,1), 0 0 150px rgba(255,69,0,0.9), 4px 4px 8px rgba(0,0,0,0.5);
+                filter: brightness(1.5) contrast(1.5);
+            }
+        }
+
+        @keyframes colorShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: block;
+            border: 5px solid rgba(255,255,255,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease;
+            object-fit: cover;
+            object-position: center 30%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .hero-content .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            opacity: 0.95;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            opacity: 0.9;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.6s ease;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 2rem;
+            color: white;
+            opacity: 0.8;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 100px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-top: 20px;
+        }
+
+        /* Timeline for Education */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-teal-700) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -51px;
+            top: 30px;
+            width: 16px;
+            height: 16px;
+            background: var(--color-primary);
+            border: 4px solid var(--color-background);
+            border-radius: 50%;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.4rem;
+            color: var(--color-text);
+            margin-bottom: 8px;
+        }
+
+        .timeline-item .institution {
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item .date {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .timeline-item .score {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(245, 87, 108, 0.3);
+        }
+
+        /* Skills Grid with Icons */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-icon {
+            font-size: 1.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 12px 0;
+            color: var(--color-text);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-list li:hover {
+            padding-left: 10px;
+            color: var(--color-primary);
+        }
+
+        .skill-list li::before {
+            content: '▹';
+            color: var(--color-primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Projects Grid with Hover Effects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .project-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(var(--color-teal-500-rgb), 0.1), transparent);
+            transition: top 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            top: 0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: var(--color-primary);
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .project-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            color: var(--color-text);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            padding: 6px 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .project-card p {
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Internships with Modern Cards */
+        .internships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .internship-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .internship-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .internship-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(79, 172, 254, 0.3);
+        }
+
+        .internship-card h3 {
+            font-size: 1.4rem;
+            color: var(--color-text);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .internship-card .company {
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .internship-card .duration {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* Certifications with Badge Design */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-badge {
+            background: var(--color-surface);
+            border: 2px solid var(--color-card-border);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cert-badge:hover {
+            border-color: #667eea;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        }
+
+        .cert-icon {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cert-info {
+            flex: 1;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 4px;
+        }
+
+        .cert-provider {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* Achievements with Animation */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .achievement-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .achievement-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            padding: 2px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .achievement-item:hover {
+            transform: translateX(10px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+        }
+
+        .achievement-icon {
+            font-size: 2rem;
+        }
+
+        .achievement-text {
+            color: var(--color-text);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 20px;
+            margin: 60px 20px;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: white;
+            color: #667eea;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid,
+            .internships-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .timeline-item::before {
+                left: -41px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/0038e727-16f2-47db-a1d4-cd4bec6092b3" alt="S Sachin Profile" class="profile-image">
+            <h1>S SACHIN</h1>
+            <p class="tagline">AI &amp; Data Science Graduate</p>
+            <p class="subtitle">Machine Learning Enthusiast | Problem Solver | Data Analytics Expert</p>
+            <div class="social-links">
+                <a href="mailto:ssachin1454@gmail.com" class="social-btn">
+                    ✉️ Email
+                </a>
+                <a href="tel:+917448909216" class="social-btn">
+                    📞 Call
+                </a>
+                <a href="http://www.linkedin.com/in/sachin-s1454" target="_blank" rel="noopener noreferrer" class="social-btn">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com/ssachin1454" target="_blank" rel="noopener noreferrer" class="social-btn">
+                    💻 GitHub
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <div class="container">
+        <!-- Education Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Education Journey</h2>
+                <p class="section-subtitle">Building a strong foundation in AI and Data Science</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>B.Tech in Artificial Intelligence and Data Science</h3>
+                    <p class="institution">Ramco Institute of Technology</p>
+                    <p class="date">2021 - 2025</p>
+                    <span class="score">CGPA: 8.00</span>
+                </div>
+                <div class="timeline-item">
+                    <h3>Higher Secondary Certificate (HSC)</h3>
+                    <p class="institution">SSV Higher Secondary School</p>
+                    <p class="date">2019 - 2021</p>
+                    <span class="score">88%</span>
+                </div>
+                <div class="timeline-item">
+                    <h3>Secondary School Leaving Certificate (SSLC)</h3>
+                    <p class="institution">SSV Higher Secondary School</p>
+                    <p class="date">2018 - 2019</p>
+                    <span class="score">85%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">Comprehensive skill set across multiple domains</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h3><span class="skill-icon">💻</span> Programming</h3>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>SQL</li>
+                        <li>HTML &amp; CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3><span class="skill-icon">📊</span> Data Science</h3>
+                    <ul class="skill-list">
+                        <li>Machine Learning</li>
+                        <li>Data Analytics</li>
+                        <li>Data Visualization</li>
+                        <li>Power BI</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3><span class="skill-icon">🛠️</span> Tools &amp; Tech</h3>
+                    <ul class="skill-list">
+                        <li>MATLAB</li>
+                        <li>Microsoft Office</li>
+                        <li>Problem Solving</li>
+                        <li>NLP</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3><span class="skill-icon">🌐</span> Languages</h3>
+                    <ul class="skill-list">
+                        <li>Tamil (Native)</li>
+                        <li>English (Fluent)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Innovative solutions powered by AI and Machine Learning</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/73e6e7ea-b581-4a32-b7fa-7179b69132d4" alt="Medical Prescription" class="project-image">
+                    <span class="tech-tag">Machine Learning</span>
+                    <h3>Medical Prescription Recognition</h3>
+                    <p>Built an ML model to recognize prescriptions and suggest affordable medicine alternatives using a smart dataset.</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/790a2bc1-8c85-47df-b74e-10775c6b4de0" alt="Brain MRI" class="project-image">
+                    <span class="tech-tag">Deep Learning</span>
+                    <h3>Brain Tumor Detection</h3>
+                    <p>Developed a CNN-based model to detect and segment brain tumors from MRI images for medical image segmentation.</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=180&fit=crop" alt="E-commerce Analytics" class="project-image">
+                    <span class="tech-tag">Data Science</span>
+                    <h3>E-commerce Site Analysis</h3>
+                    <p>Analyzed customer behavior and sales data to derive insights for improving e-commerce performance.</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=180&fit=crop" alt="Data Analytics" class="project-image">
+                    <span class="tech-tag">Analytics</span>
+                    <h3>Time Series Analysis</h3>
+                    <p>Performed time series analysis on univariate, bivariate, and multivariate datasets using Python.</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=180&fit=crop" alt="AI Chatbot" class="project-image">
+                    <span class="tech-tag">AI &amp; NLP</span>
+                    <h3>AI-Powered PDF Chatbot</h3>
+                    <p>Created an AI-driven offline chatbot to extract and interact with PDF document content providing fast and secure document search.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internships Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-subtitle">Hands-on industry exposure and practical learning</p>
+            </div>
+            <div class="internships-grid">
+                <div class="internship-card">
+                    <span class="internship-badge">Current</span>
+                    <h3>Sports Analyst</h3>
+                    <p class="company">Kadamba Technologies</p>
+                    <p class="duration">August 2024 - Present</p>
+                    <p>Currently analyzing sports data and providing insights for performance optimization. Working with real-time data analytics and developing predictive models for sports outcomes.</p>
+                </div>
+                <div class="internship-card">
+                    <span class="internship-badge">4 Weeks</span>
+                    <h3>Python AI &amp; ML Internship</h3>
+                    <p class="company">Dhatchan Academy</p>
+                    <p class="duration">June 2023 - July 2023</p>
+                    <p>Gained hands-on experience in Python programming, Artificial Intelligence, and Machine Learning concepts through real-world projects and industry best practices.</p>
+                </div>
+                <div class="internship-card">
+                    <span class="internship-badge">4 Weeks</span>
+                    <h3>Data Analytics Internship</h3>
+                    <p class="company">Technohacks EduTech</p>
+                    <p class="duration">August 2023 - September 2023</p>
+                    <p>Worked on data analytics projects, visualization techniques, and deriving actionable insights from complex datasets.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Certifications &amp; Courses</h2>
+                <p class="section-subtitle">Continuous learning and skill development</p>
+            </div>
+            <div class="certifications-grid">
+                <div class="cert-badge">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-info">
+                        <div class="cert-name">Python for OOPS</div>
+                        <div class="cert-provider">Udemy</div>
+                    </div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-info">
+                        <div class="cert-name">NLP Courses</div>
+                        <div class="cert-provider">Udemy</div>
+                    </div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-info">
+                        <div class="cert-name">MATLAB Onramp</div>
+                        <div class="cert-provider">MathWorks</div>
+                    </div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-info">
+                        <div class="cert-name">MySQL Introduction</div>
+                        <div class="cert-provider">Great Learning</div>
+                    </div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-info">
+                        <div class="cert-name">Python for ML</div>
+                        <div class="cert-provider">Udemy</div>
+                    </div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-info">
+                        <div class="cert-name">SQL at Work</div>
+                        <div class="cert-provider">CodeChef</div>
+                    </div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-info">
+                        <div class="cert-name">Computer Networking</div>
+                        <div class="cert-provider">Great Learning</div>
+                    </div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-info">
+                        <div class="cert-name">Complete ML Course</div>
+                        <div class="cert-provider">Great Learning</div>
+                    </div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-info">
+                        <div class="cert-name">Neural Networks</div>
+                        <div class="cert-provider">Coursera</div>
+                    </div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-icon">🏆</div>
+                    <div class="cert-info">
+                        <div class="cert-name">Gold Badge</div>
+                        <div class="cert-provider">HackerRank</div>
+                    </div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-info">
+                        <div class="cert-name">Data Science</div>
+                        <div class="cert-provider">Coursera</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Achievements &amp; Activities</h2>
+                <p class="section-subtitle">Recognition and active participation</p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-item">
+                    <span class="achievement-icon">☁️</span>
+                    <span class="achievement-text">Workshop on Microsoft Azure</span>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-icon">🎯</span>
+                    <span class="achievement-text">National Level Symposium - Hindusthan Institute of Technology</span>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-icon">🎯</span>
+                    <span class="achievement-text">National Level Symposium - Bannari Amman Institute</span>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-icon">🏸</span>
+                    <span class="achievement-text">Zonal Level Ball Badminton Participant</span>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-icon">🏏</span>
+                    <span class="achievement-text">1st Prize in Cricket - Sports Day</span>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-icon">👥</span>
+                    <span class="achievement-text">Member - ISTE</span>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-icon">📊</span>
+                    <span class="achievement-text">Member - Analytics Society of India, Bangalore</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2>Let's Connect!</h2>
+        <p>I'm always open to discussing new opportunities, collaborations, or just having a chat about AI and Data Science.</p>
+        <div class="contact-buttons">
+            <a href="mailto:ssachin1454@gmail.com" class="contact-btn">
+                ✉️ Send Email
+            </a>
+            <a href="http://www.linkedin.com/in/sachin-s1454" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                💼 LinkedIn Profile
+            </a>
+            <a href="https://github.com/ssachin1454" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                💻 View GitHub
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Fade in sections on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
